@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YouTube Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        async function fetchResolutions() {
+            const link = document.getElementById('link').value;
+            const resolutionDiv = document.getElementById('resolutionDiv');
+            const spinner = document.getElementById('spinner');
+            const resolutionSelect = document.getElementById('resolution');
+            
+            resolutionDiv.style.display = 'block';
+            resolutionSelect.style.display = 'none';
+            spinner.style.display = 'block';
+            
+            try {
+                const response = await fetch('/resolutions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ link: link })
+                });
+
+                const data = await response.json();
+                console.log("Fetched resolutions:", data.resolutions);
+                
+                resolutionSelect.innerHTML = '';
+                data.resolutions.forEach(res => {
+                    const option = document.createElement('option');
+                    option.value = res;
+                    option.text = res;
+                    resolutionSelect.add(option);
+                });
+
+                resolutionSelect.style.display = 'block';
+            } catch (error) {
+                console.error('Error fetching resolutions:', error);
+            } finally {
+                spinner.style.display = 'none';
+            }
+        }
+
+        function onFetchResolutions() {
+            const choice = document.getElementById('choice').value;
+            if (choice === '1') {
+                fetchResolutions();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('choice').addEventListener('change', function () {
+                const resolutionDiv = document.getElementById('resolutionDiv');
+                const fetchButton = document.getElementById('fetchButton');
+                if (this.value === '1') {
+                    resolutionDiv.style.display = 'block';
+                    fetchButton.disabled = false;
+                } else {
+                    resolutionDiv.style.display = 'none';
+                    fetchButton.disabled = true;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>YouTube Downloader</h1>
+    <form method="post" action="/">
+        <label for="link">YouTube Link:</label>
+        <input type="text" id="link" name="link" required><br>
+        <label for="choice">Download as:</label>
+        <select id="choice" name="choice" required>
+            <option value="1">MP4 Video</option>
+            <option value="2">MP3 Audio</option>
+        </select><br>
+        <div id="resolutionDiv" style="display: none;">
+            <label for="resolution">Resolution:</label>
+            <select id="resolution" name="resolution"></select><br>
+            <div id="spinner" class="spinner" style="display: none;"></div>
+        </div>
+        <button type="button" id="fetchButton" onclick="onFetchResolutions()">Fetch Resolutions</button><br>
+        <button type="submit">Download</button>
+    </form>
+</body>
+</html>
