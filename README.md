@@ -1,5 +1,5 @@
 # Youtube-Video-Downloader-WebApp
-A web version of my previous script which does not work thanks to ###YOUTUBE CHANGING ITS ALGORITHM AND BREAKING PYTUBE ENTIRELY
+A web version of my previous script which does not work thanks to YOUTUBE CHANGING ITS ALGORITHM AND BREAKING PYTUBE ENTIRELY
 
 ## Setup
 Enter these commands on your terminal:
