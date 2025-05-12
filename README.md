@@ -2,21 +2,35 @@
 A web version of my previous script
 
 ## Setup
-enter these commands on your terminal:
+Enter these commands on your terminal:
 
 pip install flask
 
-pip install pytube
+pip install yt_dlp
 
-pip install moviepy
+Download: ffmpeg from: https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip
+
+Extract the contents to a folder such as:
+C:\ffmpeg
+
+#Add FFmpeg to System PATH
+Open System Properties (Win + R → sysdm.cpl)
+
+Go to Advanced → Environment Variables
+
+Under System Variables, find and edit Path
+
+Add the following:
+C:\ffmpeg\bin
+(or path of wherever you extracted)
 
 ## Using
-enter this command on your terminal:
+Enter this command on your terminal:
 
 python app.py
 
-or just double-click on the app.py to run it
+Or just double-click on the app.py to run it
 
-after running it you will see a localhost url. Copy it and paste it into your web explorer(chrome, opera, etc)
+After running it, you will see a localhost URL. Copy it and paste it into your web browser (chrome, opera, etc), or just Ctrl+leftclick it idc
 
 have fun
