@@ -1,5 +1,5 @@
 # Youtube-Video-Downloader-WebApp
-A web version of my previous script which does not work thanks to YOUTUBE CHANGING ITS ALGORITHM AND BREAKING PYTUBE ENTIRELY
+A web version of my previous script — which no longer works thanks to **YOUTUBE CHANGING ITS ALGORITHM AND BREAKING PYTUBE ENTIRELY.**
 
 ## Setup
 Enter these commands on your terminal:
@@ -8,6 +8,7 @@ pip install flask
 
 pip install yt_dlp
 
+You **must** install FFmpeg to merge audio & video and convert audio to MP3:
 Download: ffmpeg from: https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip
 
 Extract the contents to a folder such as:
@@ -31,6 +32,6 @@ python app.py
 
 Or just double-click on the app.py to run it
 
-After running it, you will see a localhost URL. Copy it and paste it into your web browser (chrome, opera, etc), or just Ctrl+leftclick it idc
+After running it, you will see a localhost URL. Copy and paste it into your web browser (Chrome, Opera, etc) — or Ctrl+left-click it idc.
 
 have fun
